@@ -45,7 +45,7 @@
         <!--Add Birthday-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="Birthdays" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="AddBirthdayViewController" customModule="Birthdays" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,9 +127,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Birthday" id="TPT-sB-QAa">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lxg-g6-Yyd"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9Fe-Fa-inU"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lxg-g6-Yyd">
+                            <connections>
+                                <action selector="cancelTapped:" destination="BYZ-38-t0r" id="GS7-gt-oIS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9Fe-Fa-inU">
+                            <connections>
+                                <action selector="saveTapedWith_sender:" destination="BYZ-38-t0r" id="h9m-Gb-f7u"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="birthDayPicker" destination="356-Ji-Nez" id="sZF-T3-J6G"/>
+                        <outlet property="firstNameTF" destination="Xsv-LN-l8O" id="u6e-KM-5Ay"/>
+                        <outlet property="lastNameTF" destination="a17-XY-2dA" id="uHf-uT-ukf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
