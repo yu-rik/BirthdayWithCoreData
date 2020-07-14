@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A1BE15B24BE023E00CF10C5 /* BirthdaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1BE15A24BE023E00CF10C5 /* BirthdaysTableViewController.swift */; };
 		7A7DDF4A24BC8AF300D4DE73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDF4924BC8AF300D4DE73 /* AppDelegate.swift */; };
 		7A7DDF4C24BC8AF300D4DE73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDF4B24BC8AF300D4DE73 /* SceneDelegate.swift */; };
 		7A7DDF4E24BC8AF300D4DE73 /* AddBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDF4D24BC8AF300D4DE73 /* AddBirthdayViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A1BE15A24BE023E00CF10C5 /* BirthdaysTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdaysTableViewController.swift; sourceTree = "<group>"; };
 		7A7DDF4624BC8AF300D4DE73 /* Birthdays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthdays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7DDF4924BC8AF300D4DE73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A7DDF4B24BC8AF300D4DE73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,13 +64,14 @@
 			children = (
 				7A7DDF4924BC8AF300D4DE73 /* AppDelegate.swift */,
 				7A7DDF4B24BC8AF300D4DE73 /* SceneDelegate.swift */,
+				7A1BE15A24BE023E00CF10C5 /* BirthdaysTableViewController.swift */,
 				7A7DDF4D24BC8AF300D4DE73 /* AddBirthdayViewController.swift */,
+				7A7DDF6024BCB9AD00D4DE73 /* Birthday.swift */,
 				7A7DDF4F24BC8AF300D4DE73 /* Main.storyboard */,
 				7A7DDF5524BC8AF400D4DE73 /* Assets.xcassets */,
 				7A7DDF5724BC8AF400D4DE73 /* LaunchScreen.storyboard */,
 				7A7DDF5A24BC8AF400D4DE73 /* Info.plist */,
 				7A7DDF5224BC8AF300D4DE73 /* BirthdayWithCoreData.xcdatamodeld */,
-				7A7DDF6024BCB9AD00D4DE73 /* Birthday.swift */,
 			);
 			path = BirthdayWithCoreData;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1BE15B24BE023E00CF10C5 /* BirthdaysTableViewController.swift in Sources */,
 				7A7DDF6124BCB9AD00D4DE73 /* Birthday.swift in Sources */,
 				7A7DDF4E24BC8AF300D4DE73 /* AddBirthdayViewController.swift in Sources */,
 				7A7DDF5424BC8AF300D4DE73 /* BirthdayWithCoreData.xcdatamodeld in Sources */,

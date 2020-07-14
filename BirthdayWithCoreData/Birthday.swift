@@ -10,7 +10,8 @@ import Foundation
 class Birthday {
     let firstName: String
     let lastName: String
-    let birthDate: Date
+    var birthDate: Date
+    
     
     init(firstname: String, lastName: String, date: Date) {
         self.firstName = firstname
