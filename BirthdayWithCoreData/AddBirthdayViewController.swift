@@ -7,12 +7,18 @@
 //
 
 import UIKit
+protocol AddBirthdayViewControllerDelegate {
+    func addBirthdayViewController(_ addbirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday)
+}
 
 class AddBirthdayViewController: UIViewController {
 
     @IBOutlet var firstNameTF: UITextField!
     @IBOutlet var lastNameTF: UITextField!
     @IBOutlet weak var birthDayPicker: UIDatePicker!
+    
+    var delegate: AddBirthdayViewControllerDelegate? //делегат для сообщения контроллеру BirthDayTableView о добавлении нового дня рождения контроллером AddBirthDayView
+    
     
     
     override func viewDidLoad() {
@@ -28,9 +34,13 @@ class AddBirthdayViewController: UIViewController {
         
         let newBirtDay = Birthday(firstname: firstName, lastName: lastName, date: birthDayDate)
       
-        print("Имя: \(newBirtDay.firstName) ")
-        print("Фамилия: \(newBirtDay.lastName) ")
-        print("Дата рождения: \(newBirtDay.birthDate) ")
+//        print("Имя: \(newBirtDay.firstName) ")
+//        print("Фамилия: \(newBirtDay.lastName) ")
+//        print("Дата рождения: \(newBirtDay.birthDate) ")
+        delegate?.addBirthdayViewController(self, didAddBirthday: newBirtDay)
+        dismiss(animated: true, completion: nil)
+        
+        
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {

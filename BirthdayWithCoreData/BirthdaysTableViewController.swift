@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BirthdaysTableViewController: UITableViewController {
+class BirthdaysTableViewController: UITableViewController, AddBirthdayViewControllerDelegate {
 
     var birthdays = [Birthday]()
     let formDate = DateFormatter()
@@ -93,14 +93,25 @@ class BirthdaysTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // для создания делегатом BirthdayTableViewController в AddbirthdayViewController пишем три строки
+        //1. добираемся до NavigationController
+        let navigationController = segue.destination as! UINavigationController
+        //2. Добираемся до AddBirthdayViewController
+        let addBirthdayViewController = navigationController.topViewController as! AddBirthdayViewController
+        //3. создания BirthdayTableViewController делегатом 
+        addBirthdayViewController.delegate = self
     }
-    */
+    
 
+    //MARK: AddBirthdayViewControllerDelegate
+    
+    func addBirthdayViewController(_ addbirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday) {
+        birthdays.append(birthday)
+        tableView.reloadData()
+    }
 }
