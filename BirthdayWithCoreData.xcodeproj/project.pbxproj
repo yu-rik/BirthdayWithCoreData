@@ -15,7 +15,6 @@
 		7A7DDF5424BC8AF300D4DE73 /* BirthdayWithCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDF5224BC8AF300D4DE73 /* BirthdayWithCoreData.xcdatamodeld */; };
 		7A7DDF5624BC8AF400D4DE73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7DDF5524BC8AF400D4DE73 /* Assets.xcassets */; };
 		7A7DDF5924BC8AF400D4DE73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7DDF5724BC8AF400D4DE73 /* LaunchScreen.storyboard */; };
-		7A7DDF6124BCB9AD00D4DE73 /* Birthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DDF6024BCB9AD00D4DE73 /* Birthday.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		7A7DDF5524BC8AF400D4DE73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A7DDF5824BC8AF400D4DE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A7DDF5A24BC8AF400D4DE73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A7DDF6024BCB9AD00D4DE73 /* Birthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birthday.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +64,6 @@
 				7A7DDF4B24BC8AF300D4DE73 /* SceneDelegate.swift */,
 				7A1BE15A24BE023E00CF10C5 /* BirthdaysTableViewController.swift */,
 				7A7DDF4D24BC8AF300D4DE73 /* AddBirthdayViewController.swift */,
-				7A7DDF6024BCB9AD00D4DE73 /* Birthday.swift */,
 				7A7DDF4F24BC8AF300D4DE73 /* Main.storyboard */,
 				7A7DDF5524BC8AF400D4DE73 /* Assets.xcassets */,
 				7A7DDF5724BC8AF400D4DE73 /* LaunchScreen.storyboard */,
@@ -148,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1BE15B24BE023E00CF10C5 /* BirthdaysTableViewController.swift in Sources */,
-				7A7DDF6124BCB9AD00D4DE73 /* Birthday.swift in Sources */,
 				7A7DDF4E24BC8AF300D4DE73 /* AddBirthdayViewController.swift in Sources */,
 				7A7DDF5424BC8AF300D4DE73 /* BirthdayWithCoreData.xcdatamodeld in Sources */,
 				7A7DDF4A24BC8AF300D4DE73 /* AppDelegate.swift in Sources */,

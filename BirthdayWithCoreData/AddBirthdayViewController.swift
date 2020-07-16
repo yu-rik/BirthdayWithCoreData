@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
+/* удаляем за ненадобностью
 protocol AddBirthdayViewControllerDelegate {
     func addBirthdayViewController(_ addbirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday)
-}
+}*/
 
 class AddBirthdayViewController: UIViewController {
 
@@ -17,7 +19,7 @@ class AddBirthdayViewController: UIViewController {
     @IBOutlet var lastNameTF: UITextField!
     @IBOutlet weak var birthDayPicker: UIDatePicker!
     
-    var delegate: AddBirthdayViewControllerDelegate? //делегат для сообщения контроллеру BirthDayTableView о добавлении нового дня рождения контроллером AddBirthDayView
+   // var delegate: AddBirthdayViewControllerDelegate? //делегат для сообщения контроллеру BirthDayTableView о добавлении нового дня рождения контроллером AddBirthDayView
     
     
     
@@ -28,16 +30,41 @@ class AddBirthdayViewController: UIViewController {
     }
     
     @IBAction func saveTaped(_sender: UIBarButtonItem){
+        
         let firstName = firstNameTF.text ?? ""
         let lastName = lastNameTF.text ?? ""
         let birthDayDate = birthDayPicker.date
         
-        let newBirtDay = Birthday(firstname: firstName, lastName: lastName, date: birthDayDate)
+        //доступ к контексту
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        //используем context  для создания Birthday(сущность) и заполняем атрибуты сущности(поля таблицы)
+        let newBirthday = Birthday(context: context)
+        newBirthday.firstName = firstName
+        newBirthday.lastName = lastName
+        newBirthday.birthdayDate = birthDayDate
+        newBirthday.birthdayId = UUID().uuidString
+        
+        //сохранение введенных значений в сущность из contexta в базуДанных
+        do {
+            try context.save()
+        } catch let error {
+            print("Не удалось сохранить из-за ошибки - \(error)")
+        }
+        
+        
+        if let uniqeID = newBirthday.birthdayId {
+            print("ID - \(uniqeID)")
+        }
+        
+        
+     //   let newBirtDay = Birthday(firstname: firstName, lastName: lastName, date: birthDayDate)
       
 //        print("Имя: \(newBirtDay.firstName) ")
 //        print("Фамилия: \(newBirtDay.lastName) ")
 //        print("Дата рождения: \(newBirtDay.birthDate) ")
-        delegate?.addBirthdayViewController(self, didAddBirthday: newBirtDay)
+     //   delegate?.addBirthdayViewController(self, didAddBirthday: newBirtDay) передавать с помощью делегата информацию не нужно
         dismiss(animated: true, completion: nil)
         
         

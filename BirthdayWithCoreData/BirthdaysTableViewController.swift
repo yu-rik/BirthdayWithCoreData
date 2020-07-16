@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class BirthdaysTableViewController: UITableViewController, AddBirthdayViewControllerDelegate {
+class BirthdaysTableViewController: UITableViewController /*AddBirthdayViewControllerDelegate */{
 
     var birthdays = [Birthday]()
     let formDate = DateFormatter()
@@ -24,6 +25,24 @@ class BirthdaysTableViewController: UITableViewController, AddBirthdayViewContro
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    //в данном методе отображаем содержимое базыДанных в табличный список
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //доступ к контексту
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        //  создаем объект типа NSFetchRequest<Birthday> для извлечения элементов табл Birthday методом fetchRequest()           
+        let fetchRequest = Birthday.fetchRequest() as NSFetchRequest<Birthday>
+       
+        do {
+           birthdays = try context.fetch(fetchRequest)//возвращение массива объектов указанного в fetchRequest
+        } catch let error {
+            print("Не удалось сохранить из-за ошибки - \(error)")
+        }
+        tableView.reloadData()
     }
     
 
@@ -48,10 +67,11 @@ class BirthdaysTableViewController: UITableViewController, AddBirthdayViewContro
         let birthday = birthdays[indexPath.row]
         
         //отображаем значения объекта массива в строках ячейки (Title)
-        cell.textLabel?.text = birthday.firstName + " " + birthday.lastName
+        cell.textLabel?.text = birthday.firstName! + " " + birthday.lastName!
          
         //отображаем значения объекта массива в строках ячейки (Subtitle)
-        cell.detailTextLabel?.text = formDate.string(from: birthday.birthDate)
+       
+        cell.detailTextLabel?.text = formDate.string(from: birthday.birthdayDate!)
         
          
         return cell
@@ -93,7 +113,7 @@ class BirthdaysTableViewController: UITableViewController, AddBirthdayViewContro
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -106,12 +126,12 @@ class BirthdaysTableViewController: UITableViewController, AddBirthdayViewContro
         //3. создания BirthdayTableViewController делегатом 
         addBirthdayViewController.delegate = self
     }
-    
-
+    */
+/* удаляем за ненадобностью
     //MARK: AddBirthdayViewControllerDelegate
     
     func addBirthdayViewController(_ addbirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday) {
         birthdays.append(birthday)
         tableView.reloadData()
-    }
+    }*/
 }
