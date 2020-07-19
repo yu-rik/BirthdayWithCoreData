@@ -37,6 +37,12 @@ class BirthdaysTableViewController: UITableViewController /*AddBirthdayViewContr
         //  создаем объект типа NSFetchRequest<Birthday> для извлечения элементов табл Birthday методом fetchRequest()           
         let fetchRequest = Birthday.fetchRequest() as NSFetchRequest<Birthday>
        
+        //сортировка по алфавиту
+        let sortDescriptor1 = NSSortDescriptor(key: "lastName", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "firstName", ascending: true)
+        
+        fetchRequest.sortDescriptors = [ sortDescriptor2, sortDescriptor1]
+        
         do {
            birthdays = try context.fetch(fetchRequest)//возвращение массива объектов указанного в fetchRequest
         } catch let error {
@@ -78,25 +84,39 @@ class BirthdaysTableViewController: UITableViewController /*AddBirthdayViewContr
     }
     
 
-    /*
+    //Для удаления с помощью SWIPE :
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+      
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        if birthdays.count > indexPath.row {
+            let birthday = birthdays [indexPath.row]//присваиваем соответствующий объект из массива birthdays для удаления
+            
+            //доступ к контексту
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            context.delete(birthday) //удаляем объект из контекста(базы данных)
+            birthdays.remove(at: indexPath.row) //удаляем объект из массива birthdays
+           
+            //сохранение введенных значений в сущность из contexta в базуДанных
+            do {
+                try context.save()
+            } catch let error {
+                print("Не удалось сохранить из-за ошибки - \(error)")
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade) //удаление требуемого ряда из табличного представления
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
