@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 /* удаляем за ненадобностью
 protocol AddBirthdayViewControllerDelegate {
     func addBirthdayViewController(_ addbirthdayViewController: AddBirthdayViewController, didAddBirthday birthday: Birthday)
@@ -49,6 +50,18 @@ class AddBirthdayViewController: UIViewController {
         //сохранение введенных значений в сущность из contexta в базуДанных
         do {
             try context.save()
+            let message = "Сегодня Днюха у \(firstName) \(lastName)!!!" //переменная-уведомление
+            //уведомление которое будет отправленно в нужный день
+            let content = UNMutableNotificationContent() //содержит данные для уведомления
+            content.body = message //сообщение
+            content.sound = UNNotificationSound.default //звук по умолчанию
+            
+            //создание триггера для включения уведомления
+            var dateComponents = Calendar.current.dateComponents([.month, .day], from: birthDayDate) //получаем месяц и день в формате dateComponents из birthDayDate(тип Date)
+            dateComponents.hour = 8 //чтоб триггер срабатывал в 8 утра
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true) //true - для повторения триггера
+            
+            
         } catch let error {
             print("Не удалось сохранить из-за ошибки - \(error)")
         }
