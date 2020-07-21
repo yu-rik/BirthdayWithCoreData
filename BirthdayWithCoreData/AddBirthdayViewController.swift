@@ -58,9 +58,18 @@ class AddBirthdayViewController: UIViewController {
             
             //создание триггера для включения уведомления
             var dateComponents = Calendar.current.dateComponents([.month, .day], from: birthDayDate) //получаем месяц и день в формате dateComponents из birthDayDate(тип Date)
-            dateComponents.hour = 8 //чтоб триггер срабатывал в 8 утра
+            dateComponents.hour = 14 //чтоб триггер срабатывал в 8 утра
+            dateComponents.minute = 03
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true) //true - для повторения триггера
             
+            //идентификатор уведомления
+            if let identifier = newBirthday.birthdayId{
+               
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)//создаем UNNotificationRequest с помощью identifier, content, trigger
+                let center = UNUserNotificationCenter.current()// добавляем значение request в UNUserNotificationCenter с помощью метода add
+                center.add(request, withCompletionHandler: nil)
+            }
+                       
             
         } catch let error {
             print("Не удалось сохранить из-за ошибки - \(error)")

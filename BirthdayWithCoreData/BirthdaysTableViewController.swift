@@ -100,6 +100,15 @@ class BirthdaysTableViewController: UITableViewController /*AddBirthdayViewContr
         if birthdays.count > indexPath.row {
             let birthday = birthdays [indexPath.row]//присваиваем соответствующий объект из массива birthdays для удаления
             
+            //удаление уведомления
+            if let identifier = birthday.birthdayId {
+                let center = UNUserNotificationCenter.current()//доступ к UNUserNotificationCenter
+                center.removePendingNotificationRequests(withIdentifiers: [identifier]) //удаление уведомления
+                
+            }
+            
+            
+            
             //доступ к контексту
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
